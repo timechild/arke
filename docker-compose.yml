@@ -16,6 +16,6 @@ services:
       - ./src/run.py:/arke/run.py
       - ./src/manage.py:/arke/manage.py
       - ./src/config.py:/arke/config.py
-    command: python manage.py test
+    command: python manage.py run
     depends_on:
      - database

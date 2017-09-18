@@ -11,6 +11,8 @@ class Config(object):
 
 class TestConfig(Config):
     DEBUG = True
+    TESTING = True
+    WTF_CSRF_ENABLED = False
     # to-do: set up test database
 
 

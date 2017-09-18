@@ -10,6 +10,7 @@ RUN mkdir /arke
 ADD src/requirements.txt /arke
 ADD src/run.py /arke
 ADD src/config.py /arke
+ADD src/manage.py /arke
 ADD src/apps/ /arke/apps/
 
 WORKDIR /arke
