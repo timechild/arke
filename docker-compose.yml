@@ -1,0 +1,21 @@
+version: '3'
+
+services:
+  database:
+    build:
+      context: .
+      dockerfile: Dockerfile.postgres
+  video:
+    build:
+      context: .
+      dockerfile: Dockerfile.video
+    ports: 
+      - "8000:8000"
+    volumes:
+      - ./src/apps:/arke/apps
+      - ./src/run.py:/arke/run.py
+      - ./src/manage.py:/arke/manage.py
+      - ./src/config.py:/arke/config.py
+    command: python manage.py test
+    depends_on:
+     - database

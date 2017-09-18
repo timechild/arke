@@ -1,0 +1,4 @@
+FROM postgres:arke
+
+COPY db /docker-entrypoint-initdb.d/
+
