@@ -1,6 +1,7 @@
 FROM python:3
 
 ENV DATABASE_URL postgres://postgres@database:5432/arke
+ENV DATABASE_TEST postgres://postgres@database:5432/arke_test
 ENV APP_SETTINGS config.Config
 ENV SERVER_NAME 0.0.0.0
 ENV PORT 8000
@@ -8,7 +9,6 @@ ENV PORT 8000
 RUN mkdir /arke
 
 ADD src/requirements.txt /arke
-ADD src/run.py /arke
 ADD src/config.py /arke
 ADD src/manage.py /arke
 ADD src/apps/ /arke/apps/

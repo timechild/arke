@@ -12,6 +12,7 @@ class Config(object):
 class TestConfig(Config):
     DEBUG = True
     TESTING = True
+    SQLALCHEMY_DATABASE_URI = os.environ['DATABASE_TEST']
     WTF_CSRF_ENABLED = False
     # to-do: set up test database
 

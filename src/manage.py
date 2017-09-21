@@ -4,7 +4,7 @@ from apps import app, db
 from flask_script import Manager
 
 
-app.config.from_object('config.TestConfig')
+# app.config.from_object('config.TestConfig')
 manager = Manager(app)
 
 
