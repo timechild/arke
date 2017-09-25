@@ -18,7 +18,10 @@ class FlaskrTestCase(VideoTestBase):
                                  content_type='application/json',
                                  data=json.dumps(dict(
                                      title='CNN Video',
-                                     source='CNN')))
+                                     description='Video description',
+                                     url='cnn.com',
+                                     source='CNN',
+                                     iframe='<iframe>cnn.com/video</iframe>')))
 
         video = Video.query.filter_by(title='CNN Video').first()
         self.assertEqual(video.title, 'CNN Video')

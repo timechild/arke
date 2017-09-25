@@ -15,6 +15,11 @@ def index():
 @video_blueprint.route('/video-database', methods=['GET', 'POST'])
 def enty_to_database():
     content = request.get_json(silent=True)
-    Video.add_title(self=Video, title=content['title'])
+    Video.add_title(self=Video,
+                    title=content['title'],
+                    description=content['description'],
+                    url=content['url'],
+                    source=content['source'],
+                    iframe=content['iframe'])
 
     return Response({'success': True}, status=200, mimetype='application/json')
