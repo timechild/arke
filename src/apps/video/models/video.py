@@ -9,7 +9,7 @@ class Video(db.Model):
     iframe = db.Column(db.String(1000))
     source = db.Column(db.String(250))
 
-    def add_title(self, title, description, url, source, **kwargs):
+    def add_video(self, title, description, url, source, **kwargs):
         video = Video()
         video.title = title
         video.description = description

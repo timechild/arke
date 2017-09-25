@@ -12,8 +12,8 @@ def index():
     return '<h1>Welcome To Video Page</h1>'
 
 
-@video_blueprint.route('/video-database', methods=['GET', 'POST'])
-def enty_to_database():
+@video_blueprint.route('/video-to-database', methods=['GET', 'POST'])
+def add_video_to_database():
     content = request.get_json(silent=True)
     Video.add_title(self=Video,
                     title=content['title'],
