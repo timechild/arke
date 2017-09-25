@@ -15,6 +15,13 @@ class VideoTestBase(unittest.TestCase):
         self.db = db
         self.db.create_all()
 
+        Video.add_video(self=Video,
+                        title='CNN Title Video',
+                        description='Video-test description',
+                        url='cnn.com',
+                        source='CNN',
+                        iframe='<iframe>cnn.com/video</iframe>')
+
     def tearDown(self):
         self.db.session.remove()
         self.db.drop_all()
