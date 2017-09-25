@@ -18,3 +18,13 @@ class Video(db.Model):
         video.iframe = kwargs.get('iframe', None)
         db.session.add(video)
         db.session.commit()
+
+    def update_video(self, video_id, **kwargs):
+        """update the video"""
+        video = Video.query.filter_by(id=video_id).first()
+        video.title = kwargs.get('title', video.title)
+        video.description = kwargs.get('description', video.description)
+        video.url = kwargs.get('url', video.url)
+        video.source = kwargs.get('source', video.source)
+        video.iframe = kwargs.get('iframe', video.iframe)
+        db.session.commit()

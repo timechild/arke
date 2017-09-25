@@ -37,6 +37,7 @@ class FlaskrTestCase(VideoTestBase):
                                      description='New description')))
 
         video = Video.query.filter_by(id='1').first()
+
         self.assertEqual(video.title, 'New CNN Video')
         self.assertEqual(video.description, 'New description')
         self.assertEqual(response.status_code, 200)
