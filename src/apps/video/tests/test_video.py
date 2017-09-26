@@ -32,7 +32,7 @@ class FlaskrTestCase(VideoTestBase):
         response = self.app.post('/video-update',
                                  content_type='application/json',
                                  data=json.dumps(dict(
-                                     id='1',
+                                     video_id='1',
                                      title='New CNN Video',
                                      description='New description')))
 

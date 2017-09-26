@@ -16,27 +16,24 @@ def index():
 def add_video_to_database():
     content = request.get_json(silent=True)
     Video.add_video(self=Video,
-                    title=content['title'],
-                    description=content['description'],
-                    url=content['url'],
-                    source=content['source'],
-                    iframe=content['iframe'])
+                    title=content.get('title'),
+                    description=content.get('description'),
+                    url=content.get('url'),
+                    source=content.get('source'),
+                    iframe=content.get('iframe'))
 
     return Response({'success': True}, status=200, mimetype='application/json')
 
 
 @video_blueprint.route('/video-update', methods=['POST'])
 def update_video():
-    try:
-        content = request.get_json(silent=True)
-        Video.update_video(self=Video,
-                           title=content['title'],
-                           description=content['description'],
-                           url=content['url'],
-                           source=content['source'],
-                           iframe=content['iframe'])
+    content = request.get_json(silent=True)
+    Video.update_video(self=Video,
+                       video_id=content.get('video_id'),
+                       title=content.get('title'),
+                       description=content.get('description'),
+                       url=content.get('url'),
+                       source=content.get('source'),
+                       iframe=content.get('iframe'))
 
-        return Response({'success': True}, status=200, mimetype='application/json')
-
-    except Exception:
-        return Response({'success': False}, status=500, mimetype='application/json')
+    return Response({'success': True}, status=200, mimetype='application/json')
