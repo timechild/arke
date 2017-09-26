@@ -37,3 +37,9 @@ def update_video():
                        iframe=content.get('iframe'))
 
     return Response({'success': True}, status=200, mimetype='application/json')
+
+
+@video_blueprint.route('/video-by-id', methods=['POST'])
+def get_video_by_id():
+
+    return Response('{"title": "CNN Title Video"}', status=200, mimetype='application/json')
