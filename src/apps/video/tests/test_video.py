@@ -42,12 +42,20 @@ class FlaskrTestCase(VideoTestBase):
         self.assertEqual(video.description, 'New description')
         self.assertEqual(response.status_code, 200)
 
-    def test_get_all_videos(self):
+    def test_get_video_by_id(self):
         response = self.app.post('/video-by-id',
                                  content_type='application/json',
                                  data=json.dumps(dict(video_id='1')))
 
         content = response.data
         self.assertIn(b'CNN Title Video', content)
+        self.assertEqual(response.status_code, 200)
+
+    def test_get_video_wrong_id(self):
+        response = self.app.post('/video-by-id',
+                                 content_type='application/json',
+                                 data=json.dumps(dict(video_id='26')))
+
+        self.assertEqual(response.status_code, 500)
 
     # def test_get_video_query(self):

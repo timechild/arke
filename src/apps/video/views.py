@@ -1,6 +1,7 @@
 from flask import flash, redirect, render_template, request, \
-    url_for, Blueprint, json, Response
+    url_for, Blueprint, json, Response, jsonify
 from apps.video.models.video import Video
+from .video import VideoSerializer
 
 video_blueprint = Blueprint(
     'video', __name__
@@ -42,4 +43,15 @@ def update_video():
 @video_blueprint.route('/video-by-id', methods=['POST'])
 def get_video_by_id():
 
-    return Response('{"title": "CNN Title Video"}', status=200, mimetype='application/json')
+    try:
+        content = request.get_json(silent=True)
+        video = Video.get_video_by_id(self=Video,
+                                      video_id=content.get('video_id'))
+
+        serialised_video = VideoSerializer.serialze_video(self=video)
+        response = Response(serialised_video, status=200, mimetype='application/json')
+
+    except Exception:
+        response = Response(status=500, mimetype='application/json')
+
+    return response

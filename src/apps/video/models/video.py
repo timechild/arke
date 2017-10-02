@@ -28,3 +28,7 @@ class Video(db.Model):
         video.source = kwargs.get('source', video.source)
         video.iframe = kwargs.get('iframe', video.iframe)
         db.session.commit()
+
+    def get_video_by_id(self, video_id, **kwargs):
+        """get video by id"""
+        return Video.query.filter_by(id=video_id).first()
